@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/admin_menu_image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
+
+
+    <TextView
+        android:id="@+id/admin_menu_name"
+        android:layout_width="395dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="Delicious pizza"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
+</LinearLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="500dp"
+        android:weightSum="2"
+        android:gravity="end">
+
+
+
+
+
+        <Button
+            android:id="@+id/btnSignin"
+            android:layout_margin="20dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Sign in"
+            android:textColor="@android:color/white"
+            android:shadowColor="@color/colorPrimary"
+            android:layout_weight="1"
+            android:background="@color/btcSignActive"
+            android:onClick="Signinin"
+            />
+        <Button
+            android:id="@+id/btnSignup"
+            android:layout_margin="20dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Sign up"
+            android:textColor="@android:color/white"
+            android:shadowColor="@color/colorPrimary"
+            android:layout_weight="1"
+            android:background="@color/btnSignup"
+            android:onClick="signup"/>
+
+
+    </LinearLayout>
+</LinearLayout>
+

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    <LinearLayout
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <EditText
+            android:id="@+id/add_product_name"
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:hint="Name"
+            android:textSize="60sp"
+            android:ems="10"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2">
+            <Button
+                android:id="@+id/btnselect"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:layout_marginRight="8dp"
+                android:backgroundTint="@color/dark_gray"
+                android:textColor="@android:color/white"
+                android:textSize="30dp"
+                android:text="select"
+                />
+            <Button
+                android:id="@+id/btnupload"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="8dp"
+                android:backgroundTint="@color/Dim_gray"
+                android:textColor="@android:color/white"
+                android:textSize="30dp"
+                android:text="upload"
+                />
+        </LinearLayout>
+    </LinearLayout>
+    
+
+
+</androidx.cardview.widget.CardView>
