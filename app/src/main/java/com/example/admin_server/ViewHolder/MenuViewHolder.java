@@ -14,7 +14,7 @@ import com.example.admin_server.InterFace.ItemClickListener;
 import com.example.admin_server.R;
 import com.squareup.picasso.Picasso;
 
-public class MenuViewHolder extends RecyclerView.ViewHolder implements ItemClickListener, View.OnCreateContextMenuListener, View.OnClickListener {
+public class MenuViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnCreateContextMenuListener {
     TextView menuname;
     ImageView menuimage;
     ItemClickListener itemClickListener;
@@ -24,10 +24,11 @@ public class MenuViewHolder extends RecyclerView.ViewHolder implements ItemClick
 
         menuimage=itemView.findViewById(R.id.admin_menu_image);
         menuname=itemView.findViewById(R.id.admin_menu_name);
+        itemView.setOnCreateContextMenuListener(this);
         itemView.setOnClickListener(this);
     }
-    public void setOnClickListener(ItemClickListener itemClickListener){
-        this.itemClickListener=itemClickListener;
+    public void setItemClickListener(ItemClickListener itemClickListener) {
+        this.itemClickListener = itemClickListener;
     }
 
     public void setdetails(Context ctx, String image, String name){
@@ -45,11 +46,7 @@ public class MenuViewHolder extends RecyclerView.ViewHolder implements ItemClick
 
     }
 
-    @Override
-    public void onClick(View view, int position, Boolean isLongClick) {
-        itemClickListener.onClick(view,getAdapterPosition(),false);
 
-    }
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         menu.setHeaderTitle("Select the action");
@@ -58,9 +55,7 @@ public class MenuViewHolder extends RecyclerView.ViewHolder implements ItemClick
 
     }
 
-    @Override
     public void onClick(View v) {
         itemClickListener.onClick(v,getAdapterPosition(),false);
-
     }
 }

@@ -1,6 +1,6 @@
 package com.example.admin_server.Model;
 
-public class Category {
+public class Category extends Food {
     String Image;
     String Name;
 

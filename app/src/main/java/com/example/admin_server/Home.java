@@ -1,12 +1,10 @@
 package com.example.admin_server;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,12 +14,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.admin_server.Model.Category;
-import com.example.admin_server.ViewHolder.MenuViewHolder;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.example.admin_server.Model.Food;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -39,8 +35,6 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.UUID;
 
@@ -49,9 +43,9 @@ public class Home extends AppCompatActivity {
     DatabaseReference catogries;
     FirebaseStorage storage;
     StorageReference storageReference;
-    EditText product_name;
+    EditText product_name,price,description,id;
     Button select,upload;
-    Category category;
+    Food food;
     Uri saveuri;
     public final int Pick_image=71;
 
@@ -126,8 +120,12 @@ public class Home extends AppCompatActivity {
         builder.setTitle("new Item");
         builder.setMessage("Please Enter Information");
         LayoutInflater inflater=this.getLayoutInflater();
-        View add_menu_layout=inflater.inflate(R.layout.add_new_menu_layout,null);
-        product_name=add_menu_layout.findViewById(R.id.add_product_name);
+        View add_menu_layout=inflater.inflate(R.layout.add_new_food_layout,null);
+        product_name=add_menu_layout.findViewById(R.id.add_name);
+        description=add_menu_layout.findViewById(R.id.add_product_Description);
+        price=add_menu_layout.findViewById(R.id.add_product_price);
+        id=add_menu_layout.findViewById(R.id.add_product_ID);
+
         upload=add_menu_layout.findViewById(R.id.btnupload);
         select=add_menu_layout.findViewById(R.id.btnselect);
 
@@ -153,8 +151,8 @@ public class Home extends AppCompatActivity {
         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if(category!=null){
-                    catogries.push().setValue(category);
+                if(food !=null){
+                    catogries.push().setValue(food);
 
                 }
 
@@ -180,7 +178,7 @@ public class Home extends AppCompatActivity {
             Dialog.setMessage("Uploading...");
             Dialog.show();
             String Imagename= UUID.randomUUID().toString();
-            final StorageReference Imagefolder= storageReference.child("images/"+product_name.getText().toString());
+            final StorageReference Imagefolder= storageReference.child("images/"+Imagename);
             Imagefolder.putFile(saveuri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -189,7 +187,7 @@ public class Home extends AppCompatActivity {
                     Imagefolder.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
-                            category=new Category(uri.toString(),product_name.getText().toString());
+                            food =new Food(description.getText().toString(),uri.toString(),id.getText().toString(),product_name.getText().toString(),price.getText().toString());
 
                         }
                     });
@@ -236,4 +234,5 @@ public class Home extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
 }
