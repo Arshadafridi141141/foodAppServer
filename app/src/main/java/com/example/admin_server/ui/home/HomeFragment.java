@@ -83,6 +83,7 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
+
     private void loadMenu() {
         adapter=new FirebaseRecyclerAdapter<Category, MenuViewHolder>(
                 Category.class,
@@ -130,7 +131,7 @@ public class HomeFragment extends Fragment {
     private void ShowUpdateDialog(final String key, final Food item) {
         final AlertDialog.Builder builder=new AlertDialog.Builder(getContext());
         builder.setTitle("Update Item");
-        builder.setMessage("Enter Information");
+        builder.setMessage("Enter Information ");
         LayoutInflater inflater=this.getLayoutInflater();
         View add_menu_layout=inflater.inflate(R.layout.add_new_menu_layout,null);
         product_name=add_menu_layout.findViewById(R.id.Update_name);
@@ -172,7 +173,6 @@ public class HomeFragment extends Fragment {
                 dialog.dismiss();
                 item.setName(product_name.getText().toString());
                 catogries.child(key).setValue(item);
-
 
 
             }

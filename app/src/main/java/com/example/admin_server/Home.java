@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.admin_server.Admin.OrderStatus;
+import com.example.admin_server.InterFace.ListerOrder;
 import com.example.admin_server.Model.Category;
 import com.example.admin_server.Model.Food;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -62,6 +64,9 @@ public class Home extends AppCompatActivity {
         storageReference=storage.getReference();
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Intent service=new Intent(getBaseContext(), ListerOrder.class);
+        startService(service);
+
 
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -98,14 +103,18 @@ public class Home extends AppCompatActivity {
                         break;
                     case R.id.nav_gallery://cart
                         Toast.makeText(getApplicationContext(), "cart is selected", Toast.LENGTH_SHORT).show();
-                       // Intent test=new Intent(getBaseContext(), OrderStatus.class);
-                        //startActivity(test);
+
                         break;
                     case R.id.nav_slideshow://orders
-                        Toast.makeText(getApplicationContext(), "orders is selected", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getBaseContext(),"order status is selected",Toast.LENGTH_SHORT).show();
+                        Intent Order=new Intent(Home.this, OrderStatus.class);
+                        startActivity(Order);
                         break;
                     case R.id.Log_out://logout
                         Toast.makeText(getApplicationContext(), "Logout is is selected", Toast.LENGTH_SHORT).show();
+                        Intent intent=new Intent(Home.this, MainActivity.class);
+                        startActivity(intent);
+
                         break;
                 }
                 drawer.closeDrawers();

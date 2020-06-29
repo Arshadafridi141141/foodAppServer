@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Admin.FoodList"></activity>
+        <service
+            android:name=".InterFace.ListerOrder"
+            android:enabled="true"
+            android:exported="true"></service>
+
+        <activity android:name=".Admin.OrderStatus" />
+        <activity android:name=".Admin.FoodList" />
         <activity
             android:name=".Home"
             android:label="@string/title_activity_home"
