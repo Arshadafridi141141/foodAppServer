@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void Signinin(View view) {
-        Intent intent=new Intent(MainActivity.this, Home.class) ;
+        Intent intent=new Intent(MainActivity.this, Signin.class) ;
 
         startActivity(intent);
     }
